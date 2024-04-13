@@ -8,6 +8,16 @@ local TweenService = game:GetService('TweenService');
 local RenderStepped = RunService.RenderStepped;
 local LocalPlayer = Players.LocalPlayer;
 local Mouse = LocalPlayer:GetMouse();
+local function RandomString(length) 
+    local characters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+  
+    local result = ""  
+    for i = 1, length do 
+        local index = math.random(1, #characters) 
+        result = result .. string.sub(characters, index, index) 
+    end  
+    return result
+end
 
 if CoreGui:FindFirstChild("__xyz") then CoreGui:FindFirstChild("__xyz"):Destroy() end
 
@@ -3674,7 +3684,7 @@ function Library:CreateWindow(...)
         if Toggled then
             -- A bit scuffed, but if we're going from not toggled -> toggled we want to show the frame immediately so that the fade is visible.
             Outer.Visible = true;
-
+            --[[
             task.spawn(function()
                 -- TODO: add cursor fade?
                 local State = InputService.MouseIconEnabled;
@@ -3712,7 +3722,7 @@ function Library:CreateWindow(...)
 
                 Cursor:Remove();
                 CursorOutline:Remove();
-            end);
+            end);]]
         end;
 
         for _, Desc in next, Outer:GetDescendants() do
